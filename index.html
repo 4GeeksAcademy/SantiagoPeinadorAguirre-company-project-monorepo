@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Zona de metadatos y configuración global del sitio -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthCore | Atención Sanitaria Moderna</title>
+  <meta name="description" content="HealthCore: Red de clínicas de atención primaria y especializada en EE.UU. y Reino Unido. Atención accesible, moderna y centrada en el paciente.">
+  <meta name="author" content="HealthCore">
+  <link rel="icon" href="HealtCoreOnlyLogo.png">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HealthCore",  // Nombre de la empresa
+    "url": "https://www.healthcore.com",  // URL oficial
+    "logo": "https://www.healthcore.com/Imagenes-Referencias/Health_Core_Only_Logo.png",  // URL absoluta del logo
+    "sameAs": [
+      "https://twitter.com/HealthCore",    // Twitter oficial
+      "https://facebook.com/HealthCore",   // Facebook oficial
+      "https://linkedin.com/company/HealthCore" // LinkedIn oficial
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+1-800-123-4567",     // Teléfono de contacto
+      "contactType": "customer service",
+      "areaServed": ["US", "GB"],
+      "availableLanguage": ["English", "Spanish"]
+    }],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main St",
+      "addressLocality": "Austin",
+      "addressRegion": "TX",
+      "postalCode": "78701",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+</head>
+<body class="bg-neutral-50 text-neutral-900 font-sans min-h-screen flex flex-col">
+      <!-- Header principal con logo y navegación -->
+      <header class="px-4 py-3 bg-blue-50 shadow-sm flex items-center justify-between">
+        <div class="flex flex-col items-center justify-center w-full md:flex-row md:items-center md:justify-start gap-2">
+          <!-- Logotipo principal (doble tamaño) -->
+          <img src="Imagenes-Referencias/Health_Core_Only_Logo.png" alt="Logotipo de HealthCore, red de clínicas de atención primaria y especializada" title="Logotipo de HealthCore, red de clínicas de atención primaria y especializada" class="w-[144px] h-[144px] md:w-[128px] md:h-[128px] ml-0 mr-auto md:mx-0" style="width:144px;height:144px;" loading="lazy" />
+          <span class="hidden md:inline text-xl font-semibold tracking-tight">HealthCore</span>
+        </div>
+        <nav>
+          <!-- Botón hamburguesa para menú móvil -->
+          <button id="menu-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-neutral-400" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <div id="main-menu-container" class="hidden absolute top-16 right-4 bg-white rounded-xl shadow-lg p-5 z-50 flex-col gap-4 md:static md:block md:bg-transparent md:shadow-none md:p-0 md:rounded-none md:w-auto md:max-w-none md:top-auto md:right-auto min-w-fit">
+            <!-- Menú principal de navegación -->
+            <ul id="main-menu" class="flex flex-col gap-2 text-sm md:flex-row md:gap-6 md:items-center md:justify-center">
+              <li><a href="#inicio" class="text-blue-800 bg-transparent px-3 py-1 font-normal transition-colors duration-150 hover:text-blue-900 focus:outline-none aria-current:page:text-blue-900" aria-current="page">Inicio</a></li>
+              <li><a href="#servicios" class="text-blue-800 bg-transparent px-3 py-1 font-normal transition-colors duration-150 hover:text-blue-900 focus:outline-none aria-current:page:text-blue-900">Servicios</a></li>
+              <li><a href="#equipo" class="text-blue-800 bg-transparent px-3 py-1 font-normal transition-colors duration-150 hover:text-blue-900 focus:outline-none aria-current:page:text-blue-900">Equipo</a></li>
+              <li><a href="#contacto" class="text-blue-800 bg-transparent px-3 py-1 font-normal transition-colors duration-150 hover:text-blue-900 focus:outline-none aria-current:page:text-blue-900">Contacto</a></li>
+              <li><a href="application.html" class="ml-2 inline-block bg-blue-800 text-white font-semibold rounded-lg px-5 py-2 shadow hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm align-middle">Formulario</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <main class="flex-1 flex flex-col items-center justify-center px-4 py-10">
+        <!-- Sección INICIO: Presentación de la empresa -->
+        <section id="inicio" class="w-full max-w-3xl mx-auto mb-16 scroll-mt-24">
+          <!-- Hero principal con imagen y mensaje de bienvenida -->
+          <div class="relative rounded-xl shadow border border-blue-100 mb-16 overflow-hidden bg-white/90 flex items-end min-h-[320px] md:min-h-[420px] lg:min-h-[520px]" id="hero-interactive">
+            <img src="Imagenes-Referencias/Imagen_Bienvenida_Healtcore.png" alt="Imagen de bienvenida HealthCore" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none select-none" style="z-index:0;" loading="lazy" />
+            <div class="absolute inset-0 flex flex-col justify-between z-10">
+              <div class="w-full flex-1 flex flex-col justify-end items-center px-8 pb-8">
+                <h1 class="text-5xl md:text-6xl font-black tracking-tight text-blue-900 drop-shadow-lg mb-3">HealthCore</h1>
+                <p class="text-2xl md:text-3xl font-light italic text-blue-800 drop-shadow mb-1">Innovación y <span class="font-bold">excelencia</span> en salud internacional</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative rounded-xl shadow border border-blue-100 overflow-hidden bg-white/90 flex items-center min-h-[320px] md:min-h-[420px] lg:min-h-[520px] group">
+            <img id="inicio-img" src="Imagenes-Referencias/Imagen_Intro.png" alt="Imagen introductoria HealthCore" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none select-none" style="z-index:0;" loading="lazy" />
+            <div class="relative z-10 w-full h-full flex flex-col justify-between">
+              <div class="w-full px-8 pt-6 flex flex-col items-center">
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight text-blue-900 drop-shadow-lg mb-0 mt-0">Inicio</h2>
+              </div>
+              <div class="w-full flex-1 flex flex-col items-center justify-center px-8 pb-8 relative">
+                <ul id="inicio-lista" hidden class="list-disc list-inside text-neutral-900 font-semibold text-lg md:text-xl space-y-2 text-center max-w-2xl mx-auto drop-shadow transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
+                  <!-- Lista de características principales de la empresa -->
+                  <li class="text-left"><span class="font-bold text-blue-900">Red internacional:</span> <span class="font-bold">12 clínicas</span> en EE.UU. y Reino Unido.</li>
+                  <li class="text-left"><span class="font-bold text-blue-900">Equipo:</span> Más de <span class="font-bold">200 profesionales</span> dedicados a la <span class="font-bold">excelencia médica</span> y la <span class="font-bold">innovación tecnológica</span>.</li>
+                  <li class="text-left"><span class="font-bold text-blue-900">Atención:</span> Accesible, <span class="font-bold">citas en el mismo día</span> y personal bilingüe.</li>
+                  <li class="text-left"><span class="font-bold text-blue-900">Liderazgo:</span> <span class="font-bold">Dra. Sandra Okonkwo</span> y equipo multidisciplinar.</li>
+                  <li class="text-left"><span class="font-bold text-blue-900">Compromiso:</span> <span class="font-bold">Transparencia</span>, <span class="font-bold">formación continua</span> y <span class="font-bold">satisfacción del paciente</span>.</li>
+                </ul>
+              </div>
+              <div class="w-full flex justify-center pb-6">
+                <button id="mostrar_inicio" type="button" class="bg-blue-800 text-white font-semibold rounded-lg px-7 py-3 shadow-lg hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg mb-2">Mostrar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+          <!-- Sección SERVICIOS -->
+          <section id="servicios" class="w-full max-w-3xl mx-auto mb-16 scroll-mt-24">
+                      <!-- Sección de servicios ofrecidos -->
+            <div class="relative rounded-xl shadow border border-blue-100 overflow-hidden bg-white/90 flex items-center min-h-[320px] md:min-h-[420px] lg:min-h-[520px] group">
+              <img id="servicios-img" src="Imagenes-Referencias/Imagen_Servicios.png" alt="Imagen servicios HealthCore" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none select-none" style="z-index:0;" loading="lazy" />
+              <div class="relative z-10 w-full h-full flex flex-col justify-between">
+                  <div class="w-full px-8 pt-2 flex flex-col items-center">
+                    <h2 class="text-3xl md:text-4xl font-black tracking-tight text-blue-900 drop-shadow-lg mb-0 mt-0">Servicios</h2>
+                  </div>
+                  <div class="w-full flex-1 flex items-center justify-center px-8 pb-8 relative">
+                    <ul id="servicios-lista" hidden class="list-disc list-inside text-neutral-900 font-semibold text-lg md:text-xl space-y-2 text-center max-w-2xl mx-auto drop-shadow transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
+                      <!-- Lista de servicios -->
+                      <li class="text-left"><span class="font-bold text-blue-900">Atención clínica integral:</span> Consultas médicas, seguimiento de pacientes, <span class="font-bold">gestión de citas</span> y prevención.</li>
+                      <li class="text-left"><span class="font-bold text-blue-900">Tecnología en salud:</span> <span class="font-bold">Sistemas EHR</span>, telemedicina, recordatorios inteligentes y dashboards de experiencia del paciente.</li>
+                      <li class="text-left"><span class="font-bold text-blue-900">Facturación y gestión:</span> Revisión de reclamaciones, <span class="font-bold">codificación asistida por IA</span>, análisis de ingresos y automatización de procesos administrativos.</li>
+                      <li class="text-left"><span class="font-bold text-blue-900">Cumplimiento y gobierno del dato:</span> Monitorización de acceso, automatización de solicitudes de datos y <span class="font-bold">gestión de riesgos regulatorios</span>.</li>
+                    </ul>
+                  </div>
+                  <div class="w-full flex justify-center pb-6">
+                    <button id="mostrar_servicios" type="button" class="bg-blue-800 text-white font-semibold rounded-lg px-7 py-3 shadow-lg hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg mb-2">Mostrar</button>
+                  </div>
+                </div>
+            </div>
+          </section>
+
+          <!-- Sección EQUIPO -->
+          <section id="equipo" class="w-full max-w-3xl mx-auto mb-16 scroll-mt-24">
+                      <!-- Sección del equipo profesional -->
+            <div class="relative rounded-xl shadow border border-blue-100 overflow-hidden bg-white/90 flex items-center min-h-[320px] md:min-h-[420px] lg:min-h-[520px] group">
+              <img id="equipo-img" src="Imagenes-Referencias/Imagen_Equipo.png" alt="Imagen equipo HealthCore" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none select-none" style="z-index:0;" loading="lazy" />
+              <div class="relative z-10 w-full h-full flex flex-col justify-between">
+                  <div class="w-full px-8 pt-2 flex flex-col items-center">
+                    <h2 class="text-3xl md:text-4xl font-black tracking-tight text-blue-900 drop-shadow-lg mb-0 mt-0">Equipo</h2>
+                  </div>
+                  <div class="w-full flex-1 flex items-center justify-center px-8 pb-8 relative">
+                    <ul id="equipo-lista" hidden class="list-disc list-inside text-neutral-900 font-semibold text-lg md:text-xl space-y-2 text-center max-w-2xl mx-auto drop-shadow transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
+                      <!-- Lista de miembros y roles del equipo -->
+                      <li class="text-left"><span class="font-bold text-blue-900">Dirección:</span> Dra. Sandra Okonkwo (CEO), liderazgo estratégico y visión global.</li>
+                      <li class="text-left"><span class="font-bold text-blue-900">Clínico:</span> <span class="font-bold">Médicos</span>, enfermeros y técnicos especializados en atención primaria y especializada.</li>
+                      <li class="text-left"><span class="font-bold text-blue-900">Tecnología:</span> Equipo de ingenieros y analistas liderado por <span class="font-bold">James Osei (CTO)</span> en Austin.</li>
+                      <li class="text-left"><span class="font-bold text-blue-900">Facturación y administración:</span> Personal experto en gestión de reclamaciones y procesos administrativos.</li>
+                      <li class="text-left"><span class="font-bold text-blue-900">Recursos Humanos:</span> Liderado por <span class="font-bold">Diane Foster</span>, enfocado en talento, formación y bienestar laboral.</li>
+                    </ul>
+                  </div>
+                  <div class="w-full flex justify-center pb-6">
+                    <button id="mostrar_equipo" type="button" class="bg-blue-800 text-white font-semibold rounded-lg px-7 py-3 shadow-lg hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg mb-2">Mostrar</button>
+                  </div>
+                </div>
+            </div>
+          </section>
+
+          <!-- Sección CONTACTO -->
+          <section id="contacto" class="w-full max-w-3xl mx-auto mb-16 scroll-mt-24">
+                      <!-- Sección de contacto y redes sociales -->
+            <div class="relative rounded-xl shadow border border-blue-100 overflow-hidden bg-white/90 flex items-center min-h-[320px] md:min-h-[420px] lg:min-h-[520px] group">
+              <img id="contacto-img" src="Imagenes-Referencias/Imagen_Contacto.png" alt="Imagen contacto HealthCore" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none select-none" style="z-index:0;" loading="lazy" />
+              <div class="relative z-10 w-full h-full flex flex-col justify-between">
+                <div class="w-full px-8 pt-2 flex flex-col items-center">
+                  <h2 class="text-3xl md:text-4xl font-black tracking-tight text-blue-900 drop-shadow-lg mb-0 mt-0">Contacto</h2>
+                </div>
+                <div class="w-full flex-1 flex items-center justify-center px-8 pb-8 relative">
+                  <ul id="contacto-lista" hidden class="list-disc list-inside text-neutral-900 font-semibold text-lg md:text-xl space-y-2 text-center max-w-2xl mx-auto drop-shadow transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
+                    <!-- Lista de datos de contacto -->
+                    <li class="text-left"><span class="font-bold text-blue-900">Teléfono:</span> <a href="tel:+18001234567" class="text-neutral-900 no-underline hover:text-blue-700 hover:underline transition">+1-800-123-4567</a></li>
+                    <li class="text-left"><span class="font-bold text-blue-900">Correo electrónico:</span> <a href="mailto:info@healthcore.com" class="text-neutral-900 no-underline hover:text-blue-700 hover:underline transition">info@healthcore.com</a></li>
+                    <li class="text-left"><span class="font-bold text-blue-900">Dirección:</span> 123 Main St, Austin, TX, EE.UU.</li>
+                    <li class="text-left"><span class="font-bold text-blue-900">Redes sociales:</span> 
+                      <a href="https://twitter.com/HealthCore" target="_blank" rel="noopener noreferrer" class="text-neutral-900 no-underline hover:text-blue-700 hover:underline transition">Twitter</a>, 
+                      <a href="https://facebook.com/HealthCore" target="_blank" rel="noopener noreferrer" class="text-neutral-900 no-underline hover:text-blue-700 hover:underline transition">Facebook</a> y 
+                      <a href="https://linkedin.com/company/HealthCore" target="_blank" rel="noopener noreferrer" class="text-neutral-900 no-underline hover:text-blue-700 hover:underline transition">LinkedIn</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-full flex justify-center pb-6">
+                  <button id="mostrar_contacto" type="button" class="bg-blue-800 text-white font-semibold rounded-lg px-7 py-3 shadow-lg hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg mb-2">Mostrar</button>
+                </div>
+              </div>
+            </div>
+          </section>
+      </main>
+      <footer class="w-full px-4 py-6 border-t border-neutral-200 text-xs text-neutral-500 flex flex-col items-center justify-center text-center">
+          <!-- Footer con enlaces a redes sociales y derechos -->
+        <div class="flex flex-row items-center justify-center gap-6 mt-2
+          md:gap-10 md:mt-4
+          lg:gap-16 lg:mt-6">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-neutral-500 hover:text-blue-400 transition" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.46 5.92c-.8.36-1.67.6-2.58.71a4.48 4.48 0 0 0 1.97-2.48 8.93 8.93 0 0 1-2.83 1.08A4.48 4.48 0 0 0 12 9.54c0 .35.04.7.11 1.03A12.7 12.7 0 0 1 3.1 5.1a4.48 4.48 0 0 0 1.39 5.98c-.73-.02-1.42-.22-2.02-.56v.06a4.48 4.48 0 0 0 3.6 4.4c-.34.09-.7.14-1.07.14-.26 0-.51-.02-.76-.07a4.48 4.48 0 0 0 4.18 3.11A9 9 0 0 1 2 19.54a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.78 0-.19 0-.37-.01-.56a9.1 9.1 0 0 0 2.24-2.3z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-neutral-500 hover:text-blue-600 transition" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-neutral-500 hover:text-blue-700 transition" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76c.97 0 1.75.79 1.75 1.76s-.78 1.76-1.75 1.76zm15.25 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v5.59z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="w-full text-center mt-4">HealthCore &copy; 2026 · Red de clínicas de atención primaria y especializada en EE.UU. y Reino Unido. Todos los derechos reservados.</div>
+      </footer>
+
+      <!-- Mensaje de éxito y temporizador -->
+      <div id="success-message" class="hidden fixed inset-0 flex items-center justify-center z-50 bg-black/30">
+        <div class="bg-white rounded-xl shadow-lg px-8 py-6 flex flex-col items-center border border-green-200">
+          <span class="text-green-700 text-2xl font-bold mb-2 flex items-center gap-2">
+            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+            ¡Enviado con éxito!
+          </span>
+          <span class="text-green-800 text-lg font-semibold mb-1">Redirigiendo en <span id="countdown" class="font-mono">5</span> segundos...</span>
+          <div class="w-full h-2 bg-green-100 rounded mt-2 overflow-hidden">
+            <div id="progress-bar" class="h-2 bg-green-500 transition-all duration-1000" style="width:100%"></div>
+          </div>
+        </div>
+      </div>
+      <script src="validation.js" defer></script>
+      <!-- Script de validación de formularios y lógica de éxito ahora está en validation.js -->
+      <!-- Script de mobile nav toggle y fallbackMostrar ahora está en validation.js -->
+</body>
+</html>

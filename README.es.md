@@ -19,6 +19,44 @@ Este repositorio es la **plantilla de inicio** para los proyectos transversales.
 
 ---
 
+
+
+## Cómo ejecutar el proyecto localmente
+
+Puedes ejecutar la landing page y el formulario de HealthCore en tu entorno local utilizando un servidor HTTP simple con Node.js:
+
+### Ejecución local con Node.js
+
+1. Asegúrate de tener Node.js instalado en tu equipo.
+2. Abre una terminal en la raíz del proyecto.
+3. Ejecuta el siguiente comando:
+	```bash
+	npx serve .
+	```
+4. Abre la URL que te indique la terminal (por defecto http://localhost:3000) en tu navegador.
+
+Esto es compatible con Codespaces y cualquier entorno local.
+
+---
+
+
+---
+
+## Diagnóstico de PageSpeed
+
+Se realizó un diagnóstico de rendimiento utilizando PageSpeed Insights. Los resultados fueron los siguientes:
+
+![Diagnóstico PageSpeed](diagnostico-pagespeed.png)
+
+- **Rendimiento:** 62
+- **Accesibilidad:** 100
+- **Prácticas recomendadas:** 77
+- **SEO:** 100
+
+A pesar de los esfuerzos por optimizar el rendimiento (minimización de FOUC, uso de Tailwind, imágenes optimizadas y estructura semántica), no se logró superar la puntuación de 62 en rendimiento. Se solicita ayuda y revisión en la próxima clase para identificar mejoras adicionales y alcanzar un mejor puntaje.
+
+---
+
 ## Estado actual de la plantilla
 
 Actualmente el repositorio ofrece una **estructura base de carpetas y documentación**, pero todavía no incluye aplicaciones ejecutables ni scripts globales en la raíz.
