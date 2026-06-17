@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthCore | Hito 2 Data Utilities</title>
+
+    <!-- Tailwind CSS por CDN. No necesitamos crear ningún archivo .css adicional. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <!-- Header principal -->
+    <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-50">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 md:flex-row md:items-center md:justify-between"
+      >
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">
+            HealthCore Digital
+          </p>
+          <h1 class="mt-2 text-2xl font-bold text-white md:text-3xl">
+            Hito 2 · Utilidades internas de datos
+          </h1>
+          <p class="mt-2 max-w-3xl text-sm text-slate-400">
+            Panel de prueba para comprobar filtros, búsquedas, reportes y validaciones
+            creadas para la capa lógica interna de HealthCore.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-5 py-4">
+          <p class="text-sm text-slate-300">Estado del módulo</p>
+          <p class="mt-1 text-lg font-bold text-cyan-300">Modo demo activo</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-6 py-8">
+      <!-- KPIs principales -->
+      <section aria-labelledby="kpi-title">
+        <div class="mb-5 flex flex-col gap-2">
+          <h2 id="kpi-title" class="text-xl font-bold text-white">
+            Resumen operativo
+          </h2>
+          <p class="text-sm text-slate-400">
+            Métricas calculadas a partir de objetos ficticios de HealthCore.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p class="text-sm text-slate-400">Pacientes</p>
+            <p id="totalPatients" class="mt-3 text-3xl font-bold text-white">0</p>
+          </article>
+
+          <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p class="text-sm text-slate-400">Clínicas activas</p>
+            <p id="activeClinics" class="mt-3 text-3xl font-bold text-white">0</p>
+          </article>
+
+          <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p class="text-sm text-slate-400">Tasa de no-shows</p>
+            <p id="noShowRate" class="mt-3 text-3xl font-bold text-white">0%</p>
+          </article>
+
+          <article class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p class="text-sm text-slate-400">Reclamaciones rechazadas</p>
+            <p id="rejectedClaims" class="mt-3 text-3xl font-bold text-white">0</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Controles de prueba -->
+      <section class="mt-10 grid gap-6 lg:grid-cols-3">
+        <!-- Filtros -->
+        <article class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 class="text-lg font-bold text-white">Filtrar pacientes</h2>
+          <p class="mt-2 text-sm text-slate-400">
+            Comprueba el filtrado de pacientes por país.
+          </p>
+
+          <label for="countryFilter" class="mt-5 block text-sm font-medium text-slate-300">
+            País
+          </label>
+
+          <select
+            id="countryFilter"
+            class="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-cyan-400"
+          >
+            <option value="all">Todos</option>
+            <option value="US">Estados Unidos</option>
+            <option value="UK">Reino Unido</option>
+          </select>
+
+          <button
+            id="filterPatientsButton"
+            class="mt-4 w-full rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-slate-950 hover:bg-cyan-400"
+          >
+            Aplicar filtro
+          </button>
+        </article>
+
+        <!-- Búsqueda -->
+        <article class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 class="text-lg font-bold text-white">Buscar paciente</h2>
+          <p class="mt-2 text-sm text-slate-400">
+            Comprueba una búsqueda lineal por ID.
+          </p>
+
+          <label for="patientSearch" class="mt-5 block text-sm font-medium text-slate-300">
+            ID del paciente
+          </label>
+
+          <input
+            id="patientSearch"
+            type="text"
+            value="PAT-002"
+            class="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-cyan-400"
+          />
+
+          <button
+            id="searchPatientButton"
+            class="mt-4 w-full rounded-xl bg-emerald-500 px-4 py-3 font-semibold text-slate-950 hover:bg-emerald-400"
+          >
+            Buscar paciente
+          </button>
+        </article>
+
+        <!-- Validaciones -->
+        <article class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 class="text-lg font-bold text-white">Validar datos</h2>
+          <p class="mt-2 text-sm text-slate-400">
+            Comprueba una validación correcta y otra con errores.
+          </p>
+
+          <div class="mt-5 grid gap-3">
+            <button
+              id="validateValidPatientButton"
+              class="rounded-xl bg-indigo-500 px-4 py-3 font-semibold text-white hover:bg-indigo-400"
+            >
+              Validar paciente correcto
+            </button>
+
+            <button
+              id="validateInvalidPatientButton"
+              class="rounded-xl bg-rose-500 px-4 py-3 font-semibold text-white hover:bg-rose-400"
+            >
+              Validar paciente incorrecto
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <!-- Reportes -->
+      <section class="mt-10 grid gap-6 lg:grid-cols-2">
+        <article class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-white">Reportes internos</h2>
+              <p class="mt-2 text-sm text-slate-400">
+                Resultados generados con transformaciones y agregaciones.
+              </p>
+            </div>
+
+            <button
+              id="generateReportsButton"
+              class="rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-slate-950 hover:bg-cyan-400"
+            >
+              Generar reportes
+            </button>
+          </div>
+
+          <div id="reportsContainer" class="mt-5 space-y-3"></div>
+        </article>
+
+        <article class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 class="text-lg font-bold text-white">Resultado de pruebas</h2>
+          <p class="mt-2 text-sm text-slate-400">
+            Aquí se muestran los resultados de filtros, búsquedas y validaciones.
+          </p>
+
+          <pre
+            id="output"
+            class="mt-5 max-h-[420px] overflow-auto rounded-2xl border border-slate-800 bg-slate-950 p-5 text-sm leading-relaxed text-slate-200"
+          >Pulsa un botón para ver resultados...</pre>
+        </article>
+      </section>
+
+      <!-- Tabla de pacientes -->
+      <section class="mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-6">
+        <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-white">Pacientes demo</h2>
+            <p class="mt-2 text-sm text-slate-400">
+              Lista renderizada desde objetos JavaScript basados en los modelos de HealthCore.
+            </p>
+          </div>
+
+          <button
+            id="sortPatientsButton"
+            class="rounded-xl bg-slate-700 px-4 py-3 font-semibold text-white hover:bg-slate-600"
+          >
+            Ordenar por apellido
+          </button>
+        </div>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full min-w-[700px] text-left text-sm">
+            <thead class="border-b border-slate-700 text-slate-400">
+              <tr>
+                <th class="py-3 pr-4">ID</th>
+                <th class="py-3 pr-4">Nombre</th>
+                <th class="py-3 pr-4">Email</th>
+                <th class="py-3 pr-4">País</th>
+                <th class="py-3 pr-4">Clínica asignada</th>
+                <th class="py-3 pr-4">Condición crónica</th>
+              </tr>
+            </thead>
+            <tbody id="patientsTable" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-800 px-6 py-6 text-center text-sm text-slate-500">
+      HealthCore Digital · Hito 2 · Data Utilities Demo
+    </footer>
+
+    <script>
+      /*
+        IMPORTANTE:
+        Este index.html es una demo visual en navegador.
+
+        Como el navegador no ejecuta TypeScript directamente sin configurar Vite,
+        aquí usamos JavaScript dentro del HTML para comprobar visualmente la lógica.
+
+        El demo.ts sigue siendo la prueba principal para TypeScript.
+        Este archivo sirve para ver los datos en una interfaz.
+      */
+
+      /*
+        Datos ficticios de clínicas.
+        Representan sedes de HealthCore en Estados Unidos y Reino Unido.
+      */
+      const clinics = [
+        {
+          id: "CL-001",
+          name: "HealthCore Austin Central",
+          city: "Austin",
+          country: "US",
+          address: "1200 Wellness Ave, Austin, TX",
+          phone: "+1-512-555-0101",
+          isActive: true,
+        },
+        {
+          id: "CL-002",
+          name: "HealthCore Miami Beach",
+          city: "Miami",
+          country: "US",
+          address: "88 Ocean Health Blvd, Miami, FL",
+          phone: "+1-305-555-0145",
+          isActive: true,
+        },
+        {
+          id: "CL-003",
+          name: "HealthCore London City",
+          city: "London",
+          country: "UK",
+          address: "22 Patient Lane, London",
+          phone: "+44-20-5555-0110",
+          isActive: true,
+        },
+      ];
+
+      /*
+        Datos ficticios de pacientes.
+        Cada paciente está asociado a una clínica mediante assignedClinicId.
+      */
+      const patients = [
+        {
+          id: "PAT-001",
+          firstName: "Ana",
+          lastName: "Martínez",
+          email: "ana.martinez@example.com",
+          phone: "+1-512-555-1001",
+          dateOfBirth: "1988-04-12",
+          country: "US",
+          assignedClinicId: "CL-001",
+          hasChronicCondition: true,
+        },
+        {
+          id: "PAT-002",
+          firstName: "James",
+          lastName: "Wilson",
+          email: "james.wilson@example.com",
+          phone: "+1-305-555-1002",
+          dateOfBirth: "1975-09-30",
+          country: "US",
+          assignedClinicId: "CL-002",
+          hasChronicCondition: false,
+        },
+        {
+          id: "PAT-003",
+          firstName: "Priya",
+          lastName: "Shah",
+          email: "priya.shah@example.com",
+          phone: "+44-20-5555-1003",
+          dateOfBirth: "1992-01-18",
+          country: "UK",
+          assignedClinicId: "CL-003",
+          hasChronicCondition: false,
+        },
+      ];
+
+      /*
+        Datos ficticios de citas médicas.
+        Sirven para calcular no-shows y citas por clínica.
+      */
+      const appointments = [
+        {
+          id: "APT-001",
+          patientId: "PAT-001",
+          clinicId: "CL-001",
+          staffId: "STAFF-001",
+          date: "2026-06-20T10:00:00",
+          durationMinutes: 30,
+          status: "completed",
+          reason: "Annual checkup",
+        },
+        {
+          id: "APT-002",
+          patientId: "PAT-002",
+          clinicId: "CL-002",
+          staffId: "STAFF-001",
+          date: "2026-06-21T12:00:00",
+          durationMinutes: 45,
+          status: "no-show",
+          reason: "Chronic condition follow-up",
+        },
+        {
+          id: "APT-003",
+          patientId: "PAT-003",
+          clinicId: "CL-003",
+          staffId: "STAFF-003",
+          date: "2026-06-22T09:30:00",
+          durationMinutes: 30,
+          status: "scheduled",
+          reason: "Primary care consultation",
+        },
+        {
+          id: "APT-004",
+          patientId: "PAT-001",
+          clinicId: "CL-001",
+          staffId: "STAFF-001",
+          date: "2026-06-23T15:00:00",
+          durationMinutes: 30,
+          status: "cancelled",
+          reason: "Preventive health consultation",
+        },
+      ];
+
+      /*
+        Datos ficticios de facturación.
+        Sirven para calcular reclamaciones rechazadas e importes.
+      */
+      const billingClaims = [
+        {
+          id: "BILL-001",
+          patientId: "PAT-001",
+          appointmentId: "APT-001",
+          clinicId: "CL-001",
+          amount: 180,
+          currency: "USD",
+          status: "paid",
+          submittedAt: "2026-06-20",
+        },
+        {
+          id: "BILL-002",
+          patientId: "PAT-002",
+          appointmentId: "APT-002",
+          clinicId: "CL-002",
+          amount: 240,
+          currency: "USD",
+          status: "rejected",
+          submittedAt: "2026-06-21",
+          rejectionReason: "Missing insurance authorization",
+        },
+        {
+          id: "BILL-003",
+          patientId: "PAT-003",
+          appointmentId: "APT-003",
+          clinicId: "CL-003",
+          amount: 150,
+          currency: "GBP",
+          status: "submitted",
+          submittedAt: "2026-06-22",
+        },
+      ];
+
+      /*
+        Paciente incorrecto creado a propósito.
+        Lo usamos para comprobar que las validaciones detectan errores.
+      */
+      const invalidPatient = {
+        id: "",
+        firstName: "",
+        lastName: "Test",
+        email: "invalid-email",
+        phone: "",
+        dateOfBirth: "2035-01-01",
+        country: "US",
+        assignedClinicId: "",
+        hasChronicCondition: false,
+      };
+
+      /*
+        Muestra cualquier resultado en el panel de salida.
+      */
+      function printOutput(data) {
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+      }
+
+      /*
+        Busca el nombre de una clínica usando su ID.
+      */
+      function getClinicNameById(clinicId) {
+        const clinic = clinics.find((clinic) => clinic.id === clinicId);
+        return clinic ? clinic.name : "Unknown clinic";
+      }
+
+      /*
+        Filtra una colección según una condición.
+      */
+      function filterItems(items, condition) {
+        return items.filter(condition);
+      }
+
+      /*
+        Ordena una colección por una propiedad.
+        Usamos una copia para no modificar el array original.
+      */
+      function sortByProperty(items, key, order = "asc") {
+        return [...items].sort((a, b) => {
+          if (a[key] < b[key]) {
+            return order === "asc" ? -1 : 1;
+          }
+
+          if (a[key] > b[key]) {
+            return order === "asc" ? 1 : -1;
+          }
+
+          return 0;
+        });
+      }
+
+      /*
+        Búsqueda lineal.
+        Recorre el array hasta encontrar el primer elemento que cumple la condición.
+      */
+      function linearSearch(items, condition) {
+        return items.find(condition);
+      }
+
+      /*
+        Calcula la tasa de no-shows.
+      */
+      function calculateNoShowRate(appointments) {
+        if (appointments.length === 0) {
+          return 0;
+        }
+
+        const noShows = appointments.filter(
+          (appointment) => appointment.status === "no-show"
+        );
+
+        const rate = (noShows.length / appointments.length) * 100;
+
+        return Number(rate.toFixed(2));
+      }
+
+      /*
+        Cuenta elementos por una propiedad.
+        Sirve para reportes simples.
+      */
+      function countByProperty(items, key) {
+        return items.reduce((result, item) => {
+          const value = item[key];
+          result[value] = (result[value] || 0) + 1;
+          return result;
+        }, {});
+      }
+
+      /*
+        Suma importes de facturación por moneda.
+      */
+      function sumBillingByCurrency(currency) {
+        return billingClaims
+          .filter((claim) => claim.currency === currency)
+          .reduce((total, claim) => total + claim.amount, 0);
+      }
+
+      /*
+        Valida si un texto existe y no está vacío.
+      */
+      function isRequiredText(value) {
+        return typeof value === "string" && value.trim().length > 0;
+      }
+
+      /*
+        Valida formato básico de email.
+      */
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      /*
+        Valida que una fecha sea real.
+      */
+      function isValidDate(date) {
+        return !Number.isNaN(Date.parse(date));
+      }
+
+      /*
+        Valida datos básicos de un paciente.
+      */
+      function validatePatient(patient) {
+        const errors = [];
+
+        if (!isRequiredText(patient.id)) {
+          errors.push("Patient id is required.");
+        }
+
+        if (!isRequiredText(patient.firstName)) {
+          errors.push("Patient first name is required.");
+        }
+
+        if (!isRequiredText(patient.lastName)) {
+          errors.push("Patient last name is required.");
+        }
+
+        if (!isRequiredText(patient.email)) {
+          errors.push("Patient email is required.");
+        } else if (!isValidEmail(patient.email)) {
+          errors.push("Patient email format is invalid.");
+        }
+
+        if (!isRequiredText(patient.phone)) {
+          errors.push("Patient phone is required.");
+        }
+
+        if (!isRequiredText(patient.dateOfBirth)) {
+          errors.push("Patient date of birth is required.");
+        } else if (!isValidDate(patient.dateOfBirth)) {
+          errors.push("Patient date of birth is invalid.");
+        } else if (new Date(patient.dateOfBirth).getTime() > Date.now()) {
+          errors.push("Patient date of birth cannot be in the future.");
+        }
+
+        if (!isRequiredText(patient.assignedClinicId)) {
+          errors.push("Patient must have an assigned clinic.");
+        }
+
+        return {
+          isValid: errors.length === 0,
+          errors,
+        };
+      }
+
+      /*
+        Renderiza las filas de pacientes en la tabla.
+      */
+      function renderPatientsTable(patientList) {
+        const tableBody = document.getElementById("patientsTable");
+
+        tableBody.innerHTML = patientList
+          .map(
+            (patient) => `
+              <tr class="text-slate-300">
+                <td class="py-4 pr-4 font-medium text-white">${patient.id}</td>
+                <td class="py-4 pr-4">${patient.firstName} ${patient.lastName}</td>
+                <td class="py-4 pr-4">${patient.email}</td>
+                <td class="py-4 pr-4">
+                  <span class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-300">
+                    ${patient.country}
+                  </span>
+                </td>
+                <td class="py-4 pr-4">${getClinicNameById(patient.assignedClinicId)}</td>
+                <td class="py-4 pr-4">
+                  ${
+                    patient.hasChronicCondition
+                      ? '<span class="text-amber-300">Sí</span>'
+                      : '<span class="text-emerald-300">No</span>'
+                  }
+                </td>
+              </tr>
+            `
+          )
+          .join("");
+      }
+
+      /*
+        Renderiza los KPIs principales.
+      */
+      function renderKpis() {
+        const activeClinics = clinics.filter((clinic) => clinic.isActive).length;
+        const rejectedClaims = billingClaims.filter(
+          (claim) => claim.status === "rejected"
+        ).length;
+
+        document.getElementById("totalPatients").textContent = patients.length;
+        document.getElementById("activeClinics").textContent = activeClinics;
+        document.getElementById("noShowRate").textContent =
+          calculateNoShowRate(appointments) + "%";
+        document.getElementById("rejectedClaims").textContent = rejectedClaims;
+      }
+
+      /*
+        Genera reportes simples y los muestra en tarjetas.
+      */
+      function renderReports() {
+        const reportsContainer = document.getElementById("reportsContainer");
+
+        const appointmentsByStatus = countByProperty(appointments, "status");
+        const patientsByCountry = countByProperty(patients, "country");
+        const claimsByStatus = countByProperty(billingClaims, "status");
+        const usdTotal = sumBillingByCurrency("USD");
+        const gbpTotal = sumBillingByCurrency("GBP");
+
+        const reports = [
+          {
+            title: "Citas por estado",
+            value: appointmentsByStatus,
+          },
+          {
+            title: "Pacientes por país",
+            value: patientsByCountry,
+          },
+          {
+            title: "Reclamaciones por estado",
+            value: claimsByStatus,
+          },
+          {
+            title: "Facturación USD",
+            value: `$${usdTotal}`,
+          },
+          {
+            title: "Facturación GBP",
+            value: `£${gbpTotal}`,
+          },
+        ];
+
+        reportsContainer.innerHTML = reports
+          .map(
+            (report) => `
+              <div class="rounded-xl border border-slate-800 bg-slate-950 p-4">
+                <p class="font-semibold text-white">${report.title}</p>
+                <pre class="mt-2 overflow-auto text-sm text-slate-300">${JSON.stringify(
+                  report.value,
+                  null,
+                  2
+                )}</pre>
+              </div>
+            `
+          )
+          .join("");
+
+        printOutput({
+          message: "Reports generated successfully.",
+          reports,
+        });
+      }
+
+      /*
+        Eventos de botones.
+      */
+      document
+        .getElementById("filterPatientsButton")
+        .addEventListener("click", () => {
+          const selectedCountry = document.getElementById("countryFilter").value;
+
+          const result =
+            selectedCountry === "all"
+              ? patients
+              : filterItems(
+                  patients,
+                  (patient) => patient.country === selectedCountry
+                );
+
+          renderPatientsTable(result);
+          printOutput(result);
+        });
+      document
+        .getElementById("searchPatientButton")
+        .addEventListener("click", () => {
+          const searchValue = document
+            .getElementById("patientSearch")
+            .value.trim();
+          const result = linearSearch(
+            patients,
+            (patient) => patient.id === searchValue
+          );
+          printOutput(
+            result || {
+              message: "Patient not found.",
+              searchedId: searchValue,
+            }
+          );
+        });
+      document
+        .getElementById("validateValidPatientButton")
+        .addEventListener("click", () => {
+          printOutput(validatePatient(patients[0]));
+        });
+      document
+        .getElementById("validateInvalidPatientButton")
+        .addEventListener("click", () => {
+          printOutput(validatePatient(invalidPatient));
+        });
+      document
+        .getElementById("generateReportsButton")
+        .addEventListener("click", () => {
+          renderReports();
+        });
+      document
+        .getElementById("sortPatientsButton")
+        .addEventListener("click", () => {
+          const sortedPatients = sortByProperty(patients, "lastName", "asc");
+          renderPatientsTable(sortedPatients);
+          printOutput(sortedPatients);
+        });
+      /*
+        Carga inicial de la página.
+      */
+      renderKpis();
+      renderPatientsTable(patients);
+    </script>
+  </body>
+</html>
